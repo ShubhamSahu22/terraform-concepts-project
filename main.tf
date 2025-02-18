@@ -1,4 +1,3 @@
-# ami-05576a079321f21f8
 provider "aws" {
   region = "us-east-1" # Change this to your preferred region
 }
@@ -21,8 +20,8 @@ resource "aws_security_group" "alb_sg" {
   vpc_id      = data.aws_vpc.default.id
 
   ingress {
-    from_port   = 80
-    to_port     = 80
+    from_port   = var.server_port
+    to_port     = var.server_port
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -41,8 +40,8 @@ resource "aws_security_group" "instance_sg" {
   vpc_id      = data.aws_vpc.default.id
 
   ingress {
-    from_port   = 80
-    to_port     = 80
+    from_port   = var.server_port
+    to_port     = var.server_port
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -150,7 +149,7 @@ resource "aws_lb" "app_alb" {
 # Target Group for ALB
 resource "aws_lb_target_group" "app_tg" {
   name     = "app-target-group"
-  port     = 80
+  port     = var.server_port
   protocol = "HTTP"
   vpc_id   = data.aws_vpc.default.id
 
@@ -167,7 +166,7 @@ resource "aws_lb_target_group" "app_tg" {
 # ALB Listener to forward traffic to the Target Group
 resource "aws_lb_listener" "http" {
   load_balancer_arn = aws_lb.app_alb.arn
-  port              = 80
+  port              = var.server_port
   protocol          = "HTTP"
   default_action {
     type             = "forward"
@@ -175,8 +174,4 @@ resource "aws_lb_listener" "http" {
   }
 }
 
-# Output ALB DNS Name
-output "alb_dns_name" {
-  value       = aws_lb.app_alb.dns_name
-  description = "The DNS name of the Application Load Balancer."
-}
+

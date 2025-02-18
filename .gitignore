@@ -10,3 +10,6 @@ terraform.tfstate.backup
 # Ignore any sensitive files or local overrides
 *.tfvars
 *.pem
+
+# Ignore Images and scripts 
+banner icon.png

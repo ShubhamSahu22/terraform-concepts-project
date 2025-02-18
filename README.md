@@ -1,15 +1,16 @@
 # Build a Website Using Terraform
 
 ## Overview
-This Terraform project provisions an AWS EC2 instance behind an Application Load Balancer (ALB), managed by an Auto Scaling Group (ASG). The ASG ensures that a minimum of 2 instances are always running, scaling up to 4 instances based on load.
+![Alt text](website_sample.png)
+This Terraform project creates a simple website provisioned entirely by Terraform. The architecture and website sample are shown below. The purpose of this project is to learn fundamendal terraform concepts by building a fairly straigthforward, but highly practical, hands-on project.
 
-## Features
-- Uses **AWS Default VPC** (No need to create a custom VPC/Subnet).
-- **Auto Scaling Group (ASG)** ensures high availability and scalability.
-- **Application Load Balancer (ALB)** distributes traffic to instances.
-- **Terraform Infrastructure as Code (IaC)** manages AWS resources declaratively.
+In this project we provision a sample furniture store website hosted on an AWS EC2 instance behind an Application Load Balancer (ALB), managed by an Auto Scaling Group (ASG). The ASG ensures that a minimum of 2 instances are always running, scaling up to 4 instances based on load.
+I tried to provision something more sophisticated than a blank "Hello World" page as I find it quite trivial and quite honestly, a bit boring. 
 
----
+You can follow the information and intructions below to duplicate this project, and learn key Terraform concepts yourself. Happy learning!
+
+## The Architecture
+![Alt text](architecture.png)
 
 ## **Prerequisites**
 Before deploying this project, ensure you have the following installed:
@@ -51,8 +52,8 @@ terraform-aws-autoscaling-alb/
 
 ### **Step 1: Clone the Repository**
 ```sh
-git clone https://github.com/yourusername/terraform-aws-autoscaling-alb.git
-cd terraform-aws-autoscaling-alb
+git clone https://github.com/ryan-almeida/terraform-concepts-project
+cd terraform-concepts-project
 ```
 
 ### **Step 2: Initialize Terraform**
@@ -110,13 +111,16 @@ alb_dns_name = "your-load-balancer-dns.amazonaws.com"
 ## **Terraform Concepts Covered in This Project**
 1. **Declarative vs Procedural Infrastructure**
 2. **State File (`terraform.tfstate`)**
-3. **Terraform Init (`terraform init`)**
-4. **Terraform Plan (`terraform plan`)**
-5. **Terraform Apply (`terraform apply`)**
-6. **Terraform Destroy (`terraform destroy`)**
-7. **Terraform Output (`terraform output`)**
-8. **Terraform Graph (`terraform graph`)**
-9. **Terraform Lifecycle Settings**
+3. **Terraform Folder (`.terraform`)**
+4. **Lock File (`terraform.lock.hcl`)**
+5. **Main File (`main.tf`)**
+6. **Terraform Init (`terraform init`)**
+7. **Terraform Plan (`terraform plan`)**
+8. **Terraform Apply (`terraform apply`)**
+9. **Resources in Terraform**
+10. **Variables in Terraform**
+11. **Terraform Destroy (`terraform destroy`)**
+12. **Terraform Output Functionality**
 
 This project is an excellent way to learn Terraform in a real-world AWS environment!
 
@@ -127,10 +131,9 @@ This project is an excellent way to learn Terraform in a real-world AWS environm
 - Use Terraform modules to separate networking and compute resources.
 - Implement Terraform remote state management using AWS S3 and DynamoDB.
 
-### **Author**
-[Your Name]
+### **Author: Ryan Almeida**
 
-**📌 GitHub:** [Your GitHub Profile](https://github.com/yourusername)
+**📌 GitHub Profile:** [Ryan Almeida](https://github.com/ryan-almeida)
 
-**📌 Medium Article:** [Your Medium Profile](https://medium.com/@yourusername) (Coming Soon!)
+**📌 Medium Article:** [Learn 12 Terraform Concepts with a Hands-On Project](https://medium.com/@ryanralmeida/learn-12-terraform-concepts-with-a-hands-on-project-b47f04392289)
 
