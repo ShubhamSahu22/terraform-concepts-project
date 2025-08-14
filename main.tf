@@ -57,7 +57,7 @@ resource "aws_security_group" "instance_sg" {
 # Launch Template for EC2 Instances
 resource "aws_launch_template" "app" {
   name_prefix   = "app-launch-template"
-  image_id      = "ami-0c02fb55956c7d316" # Amazon Linux 2 AMI ID (change as needed)
+  image_id      = "ami-020cba7c55df1f615" # Amazon Linux 2 AMI ID (change as needed)
   instance_type = "t2.micro"
 
   network_interfaces {
