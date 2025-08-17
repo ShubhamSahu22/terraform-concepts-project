@@ -67,30 +67,33 @@ resource "aws_launch_template" "app" {
 
   user_data = base64encode(<<-EOF
               #!/bin/bash
-              # Update the instance and install necessary packages
-              yum update -y
-              yum install -y httpd wget unzip
-              
-              # Start Apache and enable it to start on boot
-              systemctl start httpd
-              systemctl enable httpd
-              
-              # Navigate to the web root directory
-              cd /var/www/html
-              
-              # Download a CSS template directly
-              wget https://www.free-css.com/assets/files/free-css-templates/download/page284/built-better.zip
-              
-              # Unzip the template and move the files to the web root
-              unzip built-better.zip -d /var/www/html/
-              mv /var/www/html/html/* /var/www/html/
-              
-              # Clean up unnecessary files
-              rm -r /var/www/html/html
-              rm built-better.zip
-              
-              # Restart Apache to apply changes
-              systemctl restart httpd
+             #!/bin/bash
+# Update the instance and install necessary packages
+sudo apt-get update -y
+sudo apt-get upgrade -y
+sudo apt-get install -y apache2 wget unzip
+
+# Start Apache and enable it to start on boot
+sudo systemctl start apache2
+sudo systemctl enable apache2
+
+# Navigate to the web root directory
+cd /var/www/html
+
+# Download a CSS template directly
+wget https://www.free-css.com/assets/files/free-css-templates/download/page284/built-better.zip
+
+# Unzip the template and move the files to the web root
+sudo unzip built-better.zip -d /var/www/html/
+sudo mv /var/www/html/html/* /var/www/html/
+
+# Clean up unnecessary files
+sudo rm -r /var/www/html/html
+sudo rm built-better.zip
+
+# Restart Apache to apply changes
+sudo systemctl restart apache2
+
               EOF
   )
 }
